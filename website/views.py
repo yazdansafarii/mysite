@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from django.http.response import HttpResponseRedirect
+from django.http import HttpResponse,JsonResponse
+from website.models import contact
+
+from website.forms import NameForm ,ContactForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -7,7 +13,20 @@ def index_view(request):
 def about_view(request):
     return render(request,'website/about.html')
 
+
+
+
 def contact_view(request):
-    return render(request,'website/contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request,messages.SUCCESS,'your ticket submited successfully')
+        else:
+            messages.add_message(request,messages.ERROR,'your ticket didnt submited')
+    form = ContactForm()
+    return render(request,'website/contact.html',{'form':form})
+
+
 
 

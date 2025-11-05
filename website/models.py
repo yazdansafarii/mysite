@@ -10,3 +10,6 @@ class contact (models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.name
+    
+    
+    
