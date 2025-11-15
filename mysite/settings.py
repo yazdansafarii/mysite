@@ -40,8 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'website.apps.WebsiteConfig',
     'blog.apps.BlogConfig',
-    'django.contrib.sites'
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+     'robots',
 ]
+
+
+ROBOTS_USE_HOST = False
 
 
 SITE_ID = 2
